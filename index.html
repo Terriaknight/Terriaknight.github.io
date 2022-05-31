@@ -75,6 +75,100 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Vue" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/29/Vue/" class="article-date">
+  <time class="dt-published" datetime="2022-05-29T14:02:30.026Z" itemprop="datePublished">2022-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>安装npm</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org </span><br><span class="line">cnpm install vue -g</span><br><span class="line">cnpm install webpack -g</span><br><span class="line">cnpm install webpack-cli -g</span><br><span class="line">cnpm install vue-cli -g</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/05/29/Vue/" data-id="cl3uc1h8k0000pktb3thwh5tq" data-title="" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-新闻后端准备工作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="article-date">
+  <time class="dt-published" datetime="2022-05-29T10:54:27.000Z" itemprop="datePublished">2022-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/">新闻后端准备工作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="项目实现所需技术"><a href="#项目实现所需技术" class="headerlink" title="项目实现所需技术"></a>项目实现所需技术</h2><p>Springboot框架+vue框架<br>mybatis-实现数据库<br>javasecurity-实现登录+用户状态存储<br>定时任务：新闻爬虫库<br>Vue：实现管理界面<br>推送：TODO<br>多模块：Eureka</p>
+<h3 id="借鉴"><a href="#借鉴" class="headerlink" title="借鉴"></a>借鉴</h3><p>推荐算法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/bystc/article/details/87904666">https://blog.csdn.net/bystc/article/details/87904666</a><br>项目逻辑参考（除了逻辑，代码应该关系不会很大，不必写在开源选项项上）：<a target="_blank" rel="noopener" href="https://github.com/Z-Beatles/intellinews">https://github.com/Z-Beatles/intellinews</a></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>Todo的api：</p>
+<pre><code>根据id，title，author，time等进行搜索：
+1.user/new/get/&#123;id&#125;
+2.user/new/get/&#123;catagory&#125;
+3.user/new/get/&#123;title%&#125;//指的是前缀匹配
+4.user/new/get/&#123;author%&#125;
+5.user/new/get/recenttime//最近时间
+用户相关操作：
+1.user/login（post）
+2.user/register（post）
+3.user/getuserstate（get）
+4.user/postuserstate（post）//上传用户状态，客户端通过新闻浏览时间来分析对该类别兴趣程度，然后上传程度进行算法加权，生成用户画像
+5.user/selectcatogory(post)//生成基础的一个用户画像
+6.user/collectnew//收藏新闻
+推荐操作：
+根据推荐算法进行一个设计，仍然需要构思，比如返回相同的类别下的随机1个实例，或者更高端的，根据更匹配的计算权重，判断下新闻和用户的距离，进行推荐（最好是进行边缘计算，服务端这个容易垮掉）所以建议是先返回一个和用户契合度最高的类别集（100个新闻作为缓存，类别集可以是三个最高权的类集组成），再从该类别下面返回到客户端进行一个计算，选出10个出来，后面当作再刷新缓存。
+多类别新闻设计：
+额，这个人工10000条不可能，爬虫只能打一个类别的tag，其余类别的话，可以上ai分析，但难度挺大，建议随机生成临近类别。
+
+管理界面：
+vue设计，应该是上模板，返回用户画像（类似于能力值的一个十角星），新闻数据获取，当前用户数目获取。
+顺便实现一个简单的新闻设计和上线功能（这方面api我自行考虑）
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" data-id="cl3uc1h8n0001pktbh1c3c680" data-title="新闻后端准备工作" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hi" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/04/18/hi/" class="article-date">
@@ -184,7 +278,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a></li></ul>
     </div>
   </div>
 
@@ -194,7 +288,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a>
+      <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">个人项目</a>
     </div>
   </div>
 
@@ -203,7 +297,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li></ul>
     </div>
   </div>
 
@@ -214,6 +308,14 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/05/29/Vue/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/">新闻后端准备工作</a>
+          </li>
         
           <li>
             <a href="/2022/04/18/hi/">JAVA 集合转数组问题</a>

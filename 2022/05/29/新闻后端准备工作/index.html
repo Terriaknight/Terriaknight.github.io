@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>JAVA 集合转数组问题 | TerraKnight</title>
+  <title>新闻后端准备工作 | TerraKnight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="1.集合遍历不要在 foreach 循环里进行元素的 remove&#x2F;add 操作。remove 元素请使用 Iterator 方式，如果并发操作，需要对 Iterator 对象加锁. 2.Arrays.aslist()(1)当传入一个原生数据类型数组时，Arrays.asList() 的真正得到的参数就不是数组中的元素，而是数组对象本身！此时 List 的唯一元素就是这个数组，这也就解释">
+  <meta name="description" content="项目实现所需技术Springboot框架+vue框架mybatis-实现数据库javasecurity-实现登录+用户状态存储定时任务：新闻爬虫库Vue：实现管理界面推送：TODO多模块：Eureka 借鉴推荐算法：https:&#x2F;&#x2F;blog.csdn.net&#x2F;bystc&#x2F;article&#x2F;details&#x2F;87904666项目逻辑参考（除了逻辑，代码应该关系不会很大，不必写在开源选项项上）：https">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA 集合转数组问题">
-<meta property="og:url" content="http://example.com/2022/04/18/hi/index.html">
+<meta property="og:title" content="新闻后端准备工作">
+<meta property="og:url" content="http://example.com/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/index.html">
 <meta property="og:site_name" content="TerraKnight">
-<meta property="og:description" content="1.集合遍历不要在 foreach 循环里进行元素的 remove&#x2F;add 操作。remove 元素请使用 Iterator 方式，如果并发操作，需要对 Iterator 对象加锁. 2.Arrays.aslist()(1)当传入一个原生数据类型数组时，Arrays.asList() 的真正得到的参数就不是数组中的元素，而是数组对象本身！此时 List 的唯一元素就是这个数组，这也就解释">
+<meta property="og:description" content="项目实现所需技术Springboot框架+vue框架mybatis-实现数据库javasecurity-实现登录+用户状态存储定时任务：新闻爬虫库Vue：实现管理界面推送：TODO多模块：Eureka 借鉴推荐算法：https:&#x2F;&#x2F;blog.csdn.net&#x2F;bystc&#x2F;article&#x2F;details&#x2F;87904666项目逻辑参考（除了逻辑，代码应该关系不会很大，不必写在开源选项项上）：https">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-18T10:54:27.000Z">
-<meta property="article:modified_time" content="2022-04-18T13:58:24.981Z">
+<meta property="article:published_time" content="2022-05-29T10:54:27.000Z">
+<meta property="article:modified_time" content="2022-05-31T15:46:14.593Z">
 <meta property="article:author" content="LuZiKai">
-<meta property="article:tag" content="JAVA">
+<meta property="article:tag" content="个人项目">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="TerraKnight" type="application/atom+xml">
@@ -78,10 +78,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-hi" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-新闻后端准备工作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/04/18/hi/" class="article-date">
-  <time class="dt-published" datetime="2022-04-18T10:54:27.000Z" itemprop="datePublished">2022-04-18</time>
+    <a href="/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="article-date">
+  <time class="dt-published" datetime="2022-05-29T10:54:27.000Z" itemprop="datePublished">2022-05-29</time>
 </a>
     
   </div>
@@ -92,7 +92,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      JAVA 集合转数组问题
+      新闻后端准备工作
     </h1>
   
 
@@ -100,20 +100,40 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="1-集合遍历"><a href="#1-集合遍历" class="headerlink" title="1.集合遍历"></a>1.集合遍历</h2><p>不要在 foreach 循环里进行元素的 remove&#x2F;add 操作。remove 元素请使用 Iterator 方式，如果并发操作，需要对 Iterator 对象加锁.</p>
-<h2 id="2-Arrays-aslist"><a href="#2-Arrays-aslist" class="headerlink" title="2.Arrays.aslist()"></a>2.Arrays.aslist()</h2><p>(1)当传入一个原生数据类型数组时，Arrays.asList() 的真正得到的参数就不是数组中的元素，而是数组对象本身！此时 List 的唯一元素就是这个数组，这也就解释了上面的代码。<br>我们使用包装类型数组就可以解决这个问题。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer[] myArray = &#123;1, 2, 3&#125;;</span><br></pre></td></tr></table></figure>
-<p>(2)Arrays.asList() 方法返回的并不是 java.util.ArrayList ，而是 java.util.Arrays 的一个内部类,这个内部类并没有实现集合的修改方法或者说并没有重写这些方法。</p>
-<h2 id="3-正确实现数组转列表"><a href="#3-正确实现数组转列表" class="headerlink" title="3.正确实现数组转列表"></a>3.正确实现数组转列表</h2><p><code>List list = new ArrayList&lt;&gt;(Arrays.asList(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;))</code><br>或者stream:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer [] myArray = &#123; 1, 2, 3 &#125;;</span><br><span class="line">List myList = Arrays.stream(myArray).collect(Collectors.toList());</span><br><span class="line">//基本类型也可以实现转换（依赖boxed的装箱操作）</span><br><span class="line">int [] myArray2 = &#123; 1, 2, 3 &#125;;</span><br><span class="line">List myList = Arrays.stream(myArray2).boxed().collect(Collectors.toList())</span><br></pre></td></tr></table></figure>
+        <h2 id="项目实现所需技术"><a href="#项目实现所需技术" class="headerlink" title="项目实现所需技术"></a>项目实现所需技术</h2><p>Springboot框架+vue框架<br>mybatis-实现数据库<br>javasecurity-实现登录+用户状态存储<br>定时任务：新闻爬虫库<br>Vue：实现管理界面<br>推送：TODO<br>多模块：Eureka</p>
+<h3 id="借鉴"><a href="#借鉴" class="headerlink" title="借鉴"></a>借鉴</h3><p>推荐算法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/bystc/article/details/87904666">https://blog.csdn.net/bystc/article/details/87904666</a><br>项目逻辑参考（除了逻辑，代码应该关系不会很大，不必写在开源选项项上）：<a target="_blank" rel="noopener" href="https://github.com/Z-Beatles/intellinews">https://github.com/Z-Beatles/intellinews</a></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>Todo的api：</p>
+<pre><code>根据id，title，author，time等进行搜索：
+1.user/new/get/&#123;id&#125;
+2.user/new/get/&#123;catagory&#125;
+3.user/new/get/&#123;title%&#125;//指的是前缀匹配
+4.user/new/get/&#123;author%&#125;
+5.user/new/get/recenttime//最近时间
+用户相关操作：
+1.user/login（post）
+2.user/register（post）
+3.user/getuserstate（get）
+4.user/postuserstate（post）//上传用户状态，客户端通过新闻浏览时间来分析对该类别兴趣程度，然后上传程度进行算法加权，生成用户画像
+5.user/selectcatogory(post)//生成基础的一个用户画像
+6.user/collectnew//收藏新闻
+推荐操作：
+根据推荐算法进行一个设计，仍然需要构思，比如返回相同的类别下的随机1个实例，或者更高端的，根据更匹配的计算权重，判断下新闻和用户的距离，进行推荐（最好是进行边缘计算，服务端这个容易垮掉）所以建议是先返回一个和用户契合度最高的类别集（100个新闻作为缓存，类别集可以是三个最高权的类集组成），再从该类别下面返回到客户端进行一个计算，选出10个出来，后面当作再刷新缓存。
+多类别新闻设计：
+额，这个人工10000条不可能，爬虫只能打一个类别的tag，其余类别的话，可以上ai分析，但难度挺大，建议随机生成临近类别。
+
+管理界面：
+vue设计，应该是上模板，返回用户画像（类似于能力值的一个十角星），新闻数据获取，当前用户数目获取。
+顺便实现一个简单的新闻设计和上线功能（这方面api我自行考虑）
+</code></pre>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/04/18/hi/" data-id="cl24mf1gz0001nctbfdctc5ks" data-title="JAVA 集合转数组问题" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" data-id="cl3uc1h8n0001pktbh1c3c680" data-title="新闻后端准备工作" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a></li></ul>
 
     </footer>
   </div>
@@ -121,19 +141,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/05/29/Vue/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
-          新闻后端准备工作
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2022/04/18/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/04/18/hi/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">JAVA 集合转数组问题</div>
     </a>
   
 </nav>
