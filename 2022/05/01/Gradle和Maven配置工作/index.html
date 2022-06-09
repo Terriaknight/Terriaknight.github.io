@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Gradle和Maven配置工作 | TerraKnight</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前言对于Lab1来说，具体的实验实现是比较简单的，但是如何配置好文件目录，并且能够正常的进行测试和运行，无疑要花费大量的时间。所以在这里我略微地记录了下自己踩过的坑和Gradle（主要以Groovy语言为主）配置的基础教程。 Gradle使用1.Gradle优点和缺点GroovyGradle 的构建脚本是采用 Groovy 写的，而不是用 XML。 但与其他方法不同，它并不只是展示了由一种动态语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle和Maven配置工作">
+<meta property="og:url" content="http://example.com/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/index.html">
+<meta property="og:site_name" content="TerraKnight">
+<meta property="og:description" content="前言对于Lab1来说，具体的实验实现是比较简单的，但是如何配置好文件目录，并且能够正常的进行测试和运行，无疑要花费大量的时间。所以在这里我略微地记录了下自己踩过的坑和Gradle（主要以Groovy语言为主）配置的基础教程。 Gradle使用1.Gradle优点和缺点GroovyGradle 的构建脚本是采用 Groovy 写的，而不是用 XML。 但与其他方法不同，它并不只是展示了由一种动态语言">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-01T03:54:27.000Z">
+<meta property="article:modified_time" content="2022-06-06T08:54:16.188Z">
+<meta property="article:author" content="LuZiKai">
+<meta property="article:tag" content="软件构造 JAVA">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="TerraKnight" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">TerraKnight</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">from lu</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Gradle和Maven配置工作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/" class="article-date">
+  <time class="dt-published" datetime="2022-05-01T03:54:27.000Z" itemprop="datePublished">2022-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Gradle和Maven配置工作
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于Lab1来说，具体的实验实现是比较简单的，但是如何配置好文件目录，并且能够正常的进行测试和运行，无疑要花费大量的时间。<br>所以在这里我略微地记录了下自己踩过的坑和Gradle（主要以Groovy语言为主）配置的基础教程。</p>
+<h2 id="Gradle使用"><a href="#Gradle使用" class="headerlink" title="Gradle使用"></a>Gradle使用</h2><h3 id="1-Gradle优点和缺点"><a href="#1-Gradle优点和缺点" class="headerlink" title="1.Gradle优点和缺点"></a>1.Gradle优点和缺点</h3><h4 id="Groovy"><a href="#Groovy" class="headerlink" title="Groovy"></a>Groovy</h4><p>Gradle 的构建脚本是采用 Groovy 写的，而不是用 XML。 但与其他方法不同，它并不只是展示了由一种动态语言编写的原始脚本的强大。 那样将导致维护构建变得很困难。 Gradle 的整体设计是面向被作为一门语言，而不是一个僵化的框架。 并且 Groovy 是我们允许你通过抽象的 Gradle 描述你个人的 story 的黏合剂。 Gradle 提供了一些标准通用的 story。这是我们相比其他声明性构建系统的主要特点。 我们的 Groovy 支持也不是简单的糖衣层，整个 Gradle 的 API 都是完全 groovy 化的。只有通过 Groovy才能去运用它并对它提高效率。<br>但这只是官话，实际上，groovy这门语言也是要经过学习的，而且学习起来语法虽然没有难度，但是如何使用的中文文档极其欠缺，中文网上例子也非常少。</p>
+<h4 id="构建方面"><a href="#构建方面" class="headerlink" title="构建方面"></a>构建方面</h4><p>Gradle 的灵活和丰富性最终能够支持在你的构建中应用通用的设计模式。 例如，它可以很容易地将你的构建拆分为多个可重用的模块，最后再进行组装，但不要强制地进行模块的拆分。 不要把原本在一起的东西强行分开（比如在你的项目结构里），从而避免让你的构建变成一场噩梦。 最后，你可以创建一个结构良好，易于维护，易于理解的构建。<br>这也是为什么选择gradle的原因，普通的项目无力支撑起软构这门课奇葩的文件目录，但对比起来，gradle的构建速度并不快，太灵活再加上版本迭代也不好理解，测试速度比maven还慢：（  </p>
+<h3 id="2-配置思路"><a href="#2-配置思路" class="headerlink" title="2.配置思路"></a>2.配置思路</h3><h4 id="repositories配置"><a href="#repositories配置" class="headerlink" title="repositories配置"></a>repositories配置</h4><p>主要是镜像配置，防止导入的时候太慢。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    mavenLocal()</span><br><span class="line">    maven&#123; url &#x27;https://maven.aliyun.com/nexus/content/groups/public/&#x27;&#125;</span><br><span class="line">    maven &#123;</span><br><span class="line">        url = &#x27;https://repo.maven.apache.org/maven2&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">```   </span><br><span class="line">#### sourceSets模块配置</span><br><span class="line">核心！先看代码：</span><br></pre></td></tr></table></figure>
+<p>sourceSets{<br>    P1{<br>        java { srcDirs&#x3D;[‘src&#x2F;P1’] }<br>    }<br>    P2{<br>        compileClasspath+&#x3D;configurations.testCompileClasspath<br>        runtimeClasspath +&#x3D; configurations.testRuntimeClasspath<br>        java {srcDirs&#x3D;[‘src&#x2F;P2’]}<br>    }<br>    P3{<br>        java{srcDirs&#x3D;[‘src&#x2F;P3’]}<br>    }<br>    P3_test{<br>        compileClasspath+&#x3D;configurations.testCompileClasspath<br>        runtimeClasspath +&#x3D; configurations.testRuntimeClasspath<br>        compileClasspath+&#x3D;P3.output<br>        runtimeClasspath+&#x3D;P3.output<br>        java { srcDirs&#x3D;[‘test&#x2F;P3’] }<br>    }<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">这个是以lab1代码为例，必须注意到P1这样写就简单地实现了把src/P1设置为了一个模块。  </span><br><span class="line">但对于P2来说，测试和源代码又在一块了，那么，测试就得加上testcompile，使得模块有测试功能。  </span><br><span class="line">对于P3和P3test来说，P3test必须继承得到test和P3的代码，因此，我们直接使用P3.output和testcompile即可.  </span><br><span class="line">这样我们就实现了文件目录的配置.</span><br><span class="line">#### dependencies</span><br></pre></td></tr></table></figure>
+<p>dependencies {<br>    implementation fileTree(dir:’lib’,includes: [‘<em>.jar’])<br>    testImplementation fileTree(dir:’lib’,includes: [‘</em>.jar’])<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">寻找本地lib文件夹的库.</span><br><span class="line">### 3.maven(补充)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;modules&gt;
+    &lt;module&gt;demo-api&lt;/module&gt;
+    &lt;module&gt;demo-eureka&lt;/module&gt;
+    &lt;module&gt;demo-gateway&lt;/module&gt;
+    &lt;module&gt;demo-manager&lt;/module&gt;
+    &lt;module&gt;demo-provider&lt;/module&gt;
+    &lt;module&gt;demo-common&lt;/module&gt;
+&lt;/modules&gt;
+</code></pre>
+<pre><code>可以用这种方式实现多模块，但同样需要比较复杂和固定的配置操作，比如（dependency）。而且支持src/main,src/test这种方式。
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/" data-id="cl46rguci0000lstbazfb03zq" data-title="Gradle和Maven配置工作" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" rel="tag">软件构造 JAVA</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          新闻后端准备工作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/04/22/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A21/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">软构笔记（1）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" rel="tag">软件构造 JAVA</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">个人项目</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" style="font-size: 20px;">软件构造 JAVA</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/29/Vue/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/">新闻后端准备工作</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/">Gradle和Maven配置工作</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/22/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A21/">软构笔记（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/18/hi/">JAVA 集合转数组问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 LuZiKai<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
