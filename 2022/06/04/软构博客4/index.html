@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>软构笔记（4） | TerraKnight</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="spec归约规约的组成 前置条件(precondition)：输入满足的条件，在注释中记作requires。  后置条件(postcondition)：输出满足的条件，在注释中记作effects。  例外行为(exceptional behavior)：当前置条件不满足时会发生的事件 规约的比较当S2强于S1时  S2的前置条件相等或弱于S1的前置条件。  S2的后置条件相等或强于S1的后置条件。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软构笔记（4）">
+<meta property="og:url" content="http://example.com/2022/06/04/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A24/index.html">
+<meta property="og:site_name" content="TerraKnight">
+<meta property="og:description" content="spec归约规约的组成 前置条件(precondition)：输入满足的条件，在注释中记作requires。  后置条件(postcondition)：输出满足的条件，在注释中记作effects。  例外行为(exceptional behavior)：当前置条件不满足时会发生的事件 规约的比较当S2强于S1时  S2的前置条件相等或弱于S1的前置条件。  S2的后置条件相等或强于S1的后置条件。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-04T06:11:09.000Z">
+<meta property="article:modified_time" content="2022-06-14T10:23:22.097Z">
+<meta property="article:author" content="LuZiKai">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="软件构造">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="TerraKnight" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">TerraKnight</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">from lu</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-软构博客4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/04/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A24/" class="article-date">
+  <time class="dt-published" datetime="2022-06-04T06:11:09.000Z" itemprop="datePublished">2022-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      软构笔记（4）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="spec归约"><a href="#spec归约" class="headerlink" title="spec归约"></a>spec归约</h2><h3 id="规约的组成"><a href="#规约的组成" class="headerlink" title="规约的组成"></a>规约的组成</h3><ul>
+<li><p>前置条件(precondition)：输入满足的条件，在注释中记作requires。</p>
+</li>
+<li><p>后置条件(postcondition)：输出满足的条件，在注释中记作effects。</p>
+</li>
+<li><p>例外行为(exceptional behavior)：当前置条件不满足时会发生的事件</p>
+<h3 id="规约的比较"><a href="#规约的比较" class="headerlink" title="规约的比较"></a>规约的比较</h3><p>当S2强于S1时</p>
+</li>
+<li><p>S2的前置条件相等或弱于S1的前置条件。</p>
+</li>
+<li><p>S2的后置条件相等或强于S1的后置条件。</p>
+<h3 id="规约的书写注意事项"><a href="#规约的书写注意事项" class="headerlink" title="规约的书写注意事项"></a>规约的书写注意事项</h3></li>
+<li><p>首先都要先满足业务需求，注意合法和非法条件</p>
+</li>
+<li><p>抛出异常使用的是Throws，而且抛出的异常都是checked异常</p>
+</li>
+<li><p>不满足前置条件，那么实现者可以随意设计</p>
+<h2 id="面向规约写测试"><a href="#面向规约写测试" class="headerlink" title="面向规约写测试"></a>面向规约写测试</h2><h3 id="等价类划分"><a href="#等价类划分" class="headerlink" title="等价类划分"></a>等价类划分</h3><p>面向规约，将输入划分为多个等价类</p>
+</li>
+<li><p>输入在一定范围内时，划分1个合法等价类和2个非法等价类</p>
+</li>
+<li><p>输入需要一个特定值时，划分1个合法等价类和2个非法等价类</p>
+</li>
+<li><p>输入需要某集合中的一个元素时，划分1个合法等价类和1个非法等价类</p>
+</li>
+<li><p>输入是布尔值时，划分1个合法等价类和1个非法等价类</p>
+<h3 id="边界值划分"><a href="#边界值划分" class="headerlink" title="边界值划分"></a>边界值划分</h3><p>面向等价类也需要有划分：</p>
+</li>
+<li><p>输入在以值a和b确定的范围内时，测试用例需要包含a、b以及恰好大于&#x2F;小于a、b的情形。</p>
+</li>
+<li><p>输入需要一系列值时，测试用例需要包含最大值及最小值，同时也应设计超过最大值和低于最小值的用例。</p>
+</li>
+<li><p>上述策略也需应用至输出上。</p>
+</li>
+<li><p>若内部数据结构有容量限制，也应设计测试用例测试这一容量限制。</p>
+<h2 id="RI和AF"><a href="#RI和AF" class="headerlink" title="RI和AF"></a>RI和AF</h2><p>这些都主要要面向业务去写：</p>
+</li>
+<li><p>rep：实现者需要实现的属性</p>
+</li>
+<li><p>AF：所存储的数据对应于用户想要的何种内容。</p>
+</li>
+<li><p>RI：通过RI可设计checkRep()。RI的本质是从计算机中的数据到布尔值的映射。</p>
+<h2 id="LSP原则"><a href="#LSP原则" class="headerlink" title="LSP原则"></a>LSP原则</h2><p>本质就是子类能够替换父类的原则：</p>
+</li>
+<li><p>更强的RI</p>
+</li>
+<li><p>更弱的前置条件</p>
+</li>
+<li><p>更强的后置条件</p>
+<h3 id="java中的LSP原则"><a href="#java中的LSP原则" class="headerlink" title="java中的LSP原则"></a>java中的LSP原则</h3><p>首先回一下override和overload的区别：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Overload</th>
+<th>Overrid</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>参数</td>
+<td>必须改变</td>
+<td>不可改变</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>可以改变</td>
+<td>不可改变</td>
+</tr>
+<tr>
+<td>异常</td>
+<td>可以改变</td>
+<td>可以减少，但不得增加或扩大范围</td>
+</tr>
+<tr>
+<td>访问</td>
+<td>可以改变</td>
+<td>可以放宽，但不得增加限制</td>
+</tr>
+<tr>
+<td>状态</td>
+<td>编译时</td>
+<td>运行时</td>
+</tr>
+<tr>
+<td>而在java中不能实现参数逆变，overload无法让返回值协变。</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>则Lsp的参数逆变是通过overload实现</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/06/04/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A24/" data-id="cl4efw2c40009dstbeq0f0j7q" data-title="软构笔记（4）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/13/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A25/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          软构笔记（5）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/05/29/Vue/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">个人项目</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" style="font-size: 20px;">软件构造</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/15/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A26/">软构笔记（6）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/13/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A25/">软构笔记（5）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/04/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A24/">软构笔记（4）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/29/Vue/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/">新闻后端准备工作</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 LuZiKai<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

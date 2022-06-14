@@ -4,19 +4,20 @@
   <meta charset="utf-8">
   
   
-  <title>新闻后端准备工作 | TerraKnight</title>
+  <title>软构笔记（2） | TerraKnight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="项目实现所需技术Springboot框架+vue框架mybatis-实现数据库javasecurity-实现登录+用户状态存储定时任务：新闻爬虫库Vue：实现管理界面推送：TODO多模块：Eureka 借鉴推荐算法：https:&#x2F;&#x2F;blog.csdn.net&#x2F;bystc&#x2F;article&#x2F;details&#x2F;87904666项目逻辑参考（除了逻辑，代码应该关系不会很大，不必写在开源选项项上）：https">
+  <meta name="description" content="软件多维视图构建时：  Code-level view：源码、类结构；代码变化表示代码的逻辑组织  Component-level view：文件、目录、包、库、静态链接、测试项；配置项、版本表示代码的物理组织  Moment view：源码、类结构；文件、目录、包、库、静态链接、测试项表现源码和组件在特定时刻的软件形态  Period view：代码变化；配置项、版本表现软件形态随时间的变化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新闻后端准备工作">
-<meta property="og:url" content="http://example.com/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/index.html">
+<meta property="og:title" content="软构笔记（2）">
+<meta property="og:url" content="http://example.com/2022/04/29/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A22/index.html">
 <meta property="og:site_name" content="TerraKnight">
-<meta property="og:description" content="项目实现所需技术Springboot框架+vue框架mybatis-实现数据库javasecurity-实现登录+用户状态存储定时任务：新闻爬虫库Vue：实现管理界面推送：TODO多模块：Eureka 借鉴推荐算法：https:&#x2F;&#x2F;blog.csdn.net&#x2F;bystc&#x2F;article&#x2F;details&#x2F;87904666项目逻辑参考（除了逻辑，代码应该关系不会很大，不必写在开源选项项上）：https">
+<meta property="og:description" content="软件多维视图构建时：  Code-level view：源码、类结构；代码变化表示代码的逻辑组织  Component-level view：文件、目录、包、库、静态链接、测试项；配置项、版本表示代码的物理组织  Moment view：源码、类结构；文件、目录、包、库、静态链接、测试项表现源码和组件在特定时刻的软件形态  Period view：代码变化；配置项、版本表现软件形态随时间的变化">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-29T10:54:27.000Z">
-<meta property="article:modified_time" content="2022-05-31T15:46:14.593Z">
+<meta property="article:published_time" content="2022-04-29T04:14:37.000Z">
+<meta property="article:modified_time" content="2022-06-14T17:29:02.718Z">
 <meta property="article:author" content="LuZiKai">
-<meta property="article:tag" content="个人项目">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="软件构造">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="TerraKnight" type="application/atom+xml">
@@ -78,10 +79,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-新闻后端准备工作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-软构博客2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="article-date">
-  <time class="dt-published" datetime="2022-05-29T10:54:27.000Z" itemprop="datePublished">2022-05-29</time>
+    <a href="/2022/04/29/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A22/" class="article-date">
+  <time class="dt-published" datetime="2022-04-29T04:14:37.000Z" itemprop="datePublished">2022-04-29</time>
 </a>
     
   </div>
@@ -92,7 +93,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      新闻后端准备工作
+      软构笔记（2）
     </h1>
   
 
@@ -100,40 +101,58 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="项目实现所需技术"><a href="#项目实现所需技术" class="headerlink" title="项目实现所需技术"></a>项目实现所需技术</h2><p>Springboot框架+vue框架<br>mybatis-实现数据库<br>javasecurity-实现登录+用户状态存储<br>定时任务：新闻爬虫库<br>Vue：实现管理界面<br>推送：TODO<br>多模块：Eureka</p>
-<h3 id="借鉴"><a href="#借鉴" class="headerlink" title="借鉴"></a>借鉴</h3><p>推荐算法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/bystc/article/details/87904666">https://blog.csdn.net/bystc/article/details/87904666</a><br>项目逻辑参考（除了逻辑，代码应该关系不会很大，不必写在开源选项项上）：<a target="_blank" rel="noopener" href="https://github.com/Z-Beatles/intellinews">https://github.com/Z-Beatles/intellinews</a></p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>Todo的api：</p>
-<pre><code>根据id，title，author，time等进行搜索：
-1.user/new/get/&#123;id&#125;
-2.user/new/get/&#123;catagory&#125;
-3.user/new/get/&#123;title%&#125;//指的是前缀匹配
-4.user/new/get/&#123;author%&#125;
-5.user/new/get/recenttime//最近时间
-用户相关操作：
-1.user/login（post）
-2.user/register（post）
-3.user/getuserstate（get）
-4.user/postuserstate（post）//上传用户状态，客户端通过新闻浏览时间来分析对该类别兴趣程度，然后上传程度进行算法加权，生成用户画像
-5.user/selectcatogory(post)//生成基础的一个用户画像
-6.user/collectnew//收藏新闻
-推荐操作：
-根据推荐算法进行一个设计，仍然需要构思，比如返回相同的类别下的随机1个实例，或者更高端的，根据更匹配的计算权重，判断下新闻和用户的距离，进行推荐（最好是进行边缘计算，服务端这个容易垮掉）所以建议是先返回一个和用户契合度最高的类别集（100个新闻作为缓存，类别集可以是三个最高权的类集组成），再从该类别下面返回到客户端进行一个计算，选出10个出来，后面当作再刷新缓存。
-多类别新闻设计：
-额，这个人工10000条不可能，爬虫只能打一个类别的tag，其余类别的话，可以上ai分析，但难度挺大，建议随机生成临近类别。
-
-管理界面：
-vue设计，应该是上模板，返回用户画像（类似于能力值的一个十角星），新闻数据获取，当前用户数目获取。
-顺便实现一个简单的新闻设计和上线功能（这方面api我自行考虑）
-</code></pre>
+        <h2 id="软件多维视图"><a href="#软件多维视图" class="headerlink" title="软件多维视图"></a>软件多维视图</h2><p>构建时：</p>
+<ul>
+<li><p>Code-level view：源码、类结构；代码变化表示代码的逻辑组织</p>
+</li>
+<li><p>Component-level view：文件、目录、包、库、静态链接、测试项；配置项、版本表示代码的物理组织</p>
+</li>
+<li><p>Moment view：源码、类结构；文件、目录、包、库、静态链接、测试项表现源码和组件在特定时刻的软件形态</p>
+</li>
+<li><p>Period view：代码变化；配置项、版本表现软件形态随时间的变化</p>
+</li>
+</ul>
+<p>运行时：</p>
+<ul>
+<li><p>分布式程序：需要多个运行程序，分别部署于多个计算机物理环境</p>
+</li>
+<li><p>代码快照：描述程序运行时内存里变量层面的状态</p>
+</li>
+<li><p>内存转储（Memory dump）：一个包含进程内存拷贝的磁盘文件，包含程<br>  序异常退出时的寄存器、调用栈、程序数据等，调试器可以加载转储文件并显示信息</p>
+</li>
+<li><p>执行跟踪（Execution tracing）：软件层面，用日志方式记录程序执行的调用次序</p>
+</li>
+<li><p>事件日志：系统层面的日志</p>
+</li>
+</ul>
+<h2 id="开发模型"><a href="#开发模型" class="headerlink" title="开发模型"></a>开发模型</h2><ul>
+<li><p>瀑布过程 ：线性推进、整体推进、非迭代</p>
+</li>
+<li><p>增量过程 ：线性推进、增量式（多个瀑布的串行）、非迭代</p>
+</li>
+<li><p>V-Model ：线性推进、每个开发阶段都有相应的测试对齐进行验证，但是<br>测试与开发是串行而非并行进行的，也就是测试需要等开发完成后再开始。</p>
+</li>
+<li><p>原型过程 ：开发出来之后由用户试用&#x2F;评审，发现问题反馈给开发者，开发者修改原有的实现，继续交给用户评审，循环往复这个过程，直到用户满意为止。重点在于在原型上持续不断地迭代发现用户变化的需求。</p>
+</li>
+<li><p>螺旋过程多轮迭代基本遵循瀑布模式，每轮迭代有明确的目标 ，遵循“原型”过程进行严格的风险分析，方可进入下一轮迭代。</p>
+</li>
+</ul>
+<h3 id="敏捷开发"><a href="#敏捷开发" class="headerlink" title="敏捷开发"></a>敏捷开发</h3><ul>
+<li>个体和互动高于流程和工具</li>
+<li>工作的软件高于详尽的文档</li>
+<li>客户合作高于合同谈判</li>
+<li>响应变化高于遵循计划</li>
+<li>敏捷 &#x3D; 增量 + 迭代，每次迭代处理一个小规模增量。</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" data-id="cl3uc1h8n0001pktbh1c3c680" data-title="新闻后端准备工作" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2022/04/29/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A22/" data-id="cl4efw2bt0000dstb6tp340zn" data-title="软构笔记（2）" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
 
     </footer>
   </div>
@@ -141,19 +160,19 @@ vue设计，应该是上模板，返回用户画像（类似于能力值的一�
     
 <nav id="article-nav">
   
-    <a href="/2022/05/29/Vue/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/05/09/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A23/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
-          (no title)
+          软构笔记(3)（软构实验笔记）
         
       </div>
     </a>
   
   
-    <a href="/2022/05/09/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A23/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/04/22/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A21/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">软构笔记(3)（软构实验笔记）</div>
+      <div class="article-nav-title">软构笔记（1）</div>
     </a>
   
 </nav>

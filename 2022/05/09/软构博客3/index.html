@@ -4,19 +4,20 @@
   <meta charset="utf-8">
   
   
-  <title>Gradle和Maven配置工作 | TerraKnight</title>
+  <title>软构笔记(3)（软构实验笔记） | TerraKnight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="前言对于Lab1来说，具体的实验实现是比较简单的，但是如何配置好文件目录，并且能够正常的进行测试和运行，无疑要花费大量的时间。所以在这里我略微地记录了下自己踩过的坑和Gradle（主要以Groovy语言为主）配置的基础教程。 Gradle使用1.Gradle优点和缺点GroovyGradle 的构建脚本是采用 Groovy 写的，而不是用 XML。 但与其他方法不同，它并不只是展示了由一种动态语言">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gradle和Maven配置工作">
-<meta property="og:url" content="http://example.com/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/index.html">
+<meta property="og:title" content="软构笔记(3)（软构实验笔记）">
+<meta property="og:url" content="http://example.com/2022/05/09/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A23/index.html">
 <meta property="og:site_name" content="TerraKnight">
 <meta property="og:description" content="前言对于Lab1来说，具体的实验实现是比较简单的，但是如何配置好文件目录，并且能够正常的进行测试和运行，无疑要花费大量的时间。所以在这里我略微地记录了下自己踩过的坑和Gradle（主要以Groovy语言为主）配置的基础教程。 Gradle使用1.Gradle优点和缺点GroovyGradle 的构建脚本是采用 Groovy 写的，而不是用 XML。 但与其他方法不同，它并不只是展示了由一种动态语言">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-01T03:54:27.000Z">
-<meta property="article:modified_time" content="2022-06-06T08:54:16.188Z">
+<meta property="article:published_time" content="2022-05-09T03:54:27.000Z">
+<meta property="article:modified_time" content="2022-06-14T10:23:25.583Z">
 <meta property="article:author" content="LuZiKai">
-<meta property="article:tag" content="软件构造 JAVA">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="软件构造">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="TerraKnight" type="application/atom+xml">
@@ -78,10 +79,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-Gradle和Maven配置工作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-软构博客3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/" class="article-date">
-  <time class="dt-published" datetime="2022-05-01T03:54:27.000Z" itemprop="datePublished">2022-05-01</time>
+    <a href="/2022/05/09/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A23/" class="article-date">
+  <time class="dt-published" datetime="2022-05-09T03:54:27.000Z" itemprop="datePublished">2022-05-09</time>
 </a>
     
   </div>
@@ -92,7 +93,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Gradle和Maven配置工作
+      软构笔记(3)（软构实验笔记）
     </h1>
   
 
@@ -124,11 +125,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/" data-id="cl46rguci0000lstbazfb03zq" data-title="Gradle和Maven配置工作" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2022/05/09/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A23/" data-id="cl4efw2c7000adstbgn92djxo" data-title="软构笔记(3)（软构实验笔记）" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" rel="tag">软件构造 JAVA</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
 
     </footer>
   </div>
@@ -146,9 +147,9 @@
     </a>
   
   
-    <a href="/2022/04/22/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A21/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/04/29/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A22/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">软构笔记（1）</div>
+      <div class="article-nav-title">软构笔记（2）</div>
     </a>
   
 </nav>
@@ -168,7 +169,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" rel="tag">软件构造 JAVA</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
     </div>
   </div>
 
@@ -178,7 +179,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">个人项目</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" style="font-size: 20px;">软件构造 JAVA</a>
+      <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">个人项目</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" style="font-size: 20px;">软件构造</a>
     </div>
   </div>
 
@@ -187,7 +188,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li></ul>
     </div>
   </div>
 
@@ -200,23 +201,23 @@
       <ul>
         
           <li>
+            <a href="/2022/06/15/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A26/">软构笔记（6）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/13/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A25/">软构笔记（5）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/04/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A24/">软构笔记（4）</a>
+          </li>
+        
+          <li>
             <a href="/2022/05/29/Vue/">(no title)</a>
           </li>
         
           <li>
             <a href="/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/">新闻后端准备工作</a>
-          </li>
-        
-          <li>
-            <a href="/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/">Gradle和Maven配置工作</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/22/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A21/">软构笔记（1）</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/18/hi/">JAVA 集合转数组问题</a>
           </li>
         
       </ul>

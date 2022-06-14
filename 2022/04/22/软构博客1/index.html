@@ -6,17 +6,18 @@
   
   <title>软构笔记（1） | TerraKnight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="软构笔记（1）检查静态检查： 语法错误：指java语法错误 函数名字调用错误：如math.sine(实际为math.sin) 函数参数错误，参数数目错误和参数类型错误 函数返回类型和函数体的return 不同 未初始化错误动态检查 非法变量值，如x&#x2F;y，当y为0时。 无法表示的返回值，比如Interger.valueof(“hello”),则会报错 越界访问，指数组越界或字符串越界 nu">
+  <meta name="description" content="检查静态检查： 语法错误：指java语法错误 函数名字调用错误：如math.sine(实际为math.sin) 函数参数错误，参数数目错误和参数类型错误 函数返回类型和函数体的return 不同(注意void类型返回null也会出错) 未初始化错误 访问私有变量动态检查 非法变量值，如x&#x2F;y，当y为0时。 无法表示的返回值，比如Interger.valueof(“hello”),则会报错">
 <meta property="og:type" content="article">
 <meta property="og:title" content="软构笔记（1）">
 <meta property="og:url" content="http://example.com/2022/04/22/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A21/index.html">
 <meta property="og:site_name" content="TerraKnight">
-<meta property="og:description" content="软构笔记（1）检查静态检查： 语法错误：指java语法错误 函数名字调用错误：如math.sine(实际为math.sin) 函数参数错误，参数数目错误和参数类型错误 函数返回类型和函数体的return 不同 未初始化错误动态检查 非法变量值，如x&#x2F;y，当y为0时。 无法表示的返回值，比如Interger.valueof(“hello”),则会报错 越界访问，指数组越界或字符串越界 nu">
+<meta property="og:description" content="检查静态检查： 语法错误：指java语法错误 函数名字调用错误：如math.sine(实际为math.sin) 函数参数错误，参数数目错误和参数类型错误 函数返回类型和函数体的return 不同(注意void类型返回null也会出错) 未初始化错误 访问私有变量动态检查 非法变量值，如x&#x2F;y，当y为0时。 无法表示的返回值，比如Interger.valueof(“hello”),则会报错">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-22T04:14:37.000Z">
-<meta property="article:modified_time" content="2022-06-09T08:31:30.750Z">
+<meta property="article:modified_time" content="2022-06-13T15:09:46.121Z">
 <meta property="article:author" content="LuZiKai">
-<meta property="article:tag" content="软件构造 JAVA">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="软件构造">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="TerraKnight" type="application/atom+xml">
@@ -100,18 +101,19 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="软构笔记（1）"><a href="#软构笔记（1）" class="headerlink" title="软构笔记（1）"></a>软构笔记（1）</h1><h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><h3 id="静态检查："><a href="#静态检查：" class="headerlink" title="静态检查："></a>静态检查：</h3><ul>
+        <h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><h3 id="静态检查："><a href="#静态检查：" class="headerlink" title="静态检查："></a>静态检查：</h3><ul>
 <li>语法错误：指java语法错误</li>
 <li>函数名字调用错误：如math.sine(实际为math.sin)</li>
 <li>函数参数错误，参数数目错误和参数类型错误</li>
-<li>函数返回类型和函数体的return 不同</li>
-<li>未初始化错误<h3 id="动态检查"><a href="#动态检查" class="headerlink" title="动态检查"></a>动态检查</h3></li>
+<li>函数返回类型和函数体的return 不同(注意void类型返回null也会出错)</li>
+<li>未初始化错误</li>
+<li>访问私有变量<h3 id="动态检查"><a href="#动态检查" class="headerlink" title="动态检查"></a>动态检查</h3></li>
 <li>非法变量值，如x&#x2F;y，当y为0时。</li>
 <li>无法表示的返回值，比如Interger.valueof(“hello”),则会报错</li>
 <li>越界访问，指数组越界或字符串越界</li>
 <li>nullpointer错误<h3 id="final和static"><a href="#final和static" class="headerlink" title="final和static"></a>final和static</h3></li>
-<li>final直接理解为指针指向的地址固定即可</li>
-<li>static则理解为不需要对类内部进行操作，类仅仅作为一个索引来访问方法，属于函数式编程的思想。<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><h3 id="git存储的基本方式"><a href="#git存储的基本方式" class="headerlink" title="git存储的基本方式"></a>git存储的基本方式</h3>git只能跟踪文本文件的变动，存储的也是改变后的文件，未改变的文件在新的提交中指向同一个文件。<h3 id="git的基本命令"><a href="#git的基本命令" class="headerlink" title="git的基本命令"></a>git的基本命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">git init //用于把这个目录变成Git可以管理的仓库</span><br><span class="line">git add xxx //用于添加xxx文件</span><br><span class="line">git commit -m “提交说明” //用于提交</span><br><span class="line">git log //查看提交记录</span><br><span class="line">git reset --hard commit_id //硬回退到commit_id处</span><br><span class="line">git status //查看gitmodified和add的东西</span><br><span class="line">git checkout &lt;file&gt; //丢弃修改，即用版本库里的替换工作区的</span><br><span class="line">git reset HEAD &lt;file&gt; //丢弃暂存区内的文件</span><br><span class="line">git rm &lt;file&gt; //删除版本库文件</span><br><span class="line">git remote add origin &lt;地址&gt; // 注意origin是可以更改为其他名字的</span><br><span class="line">git push -u origin master //推送</span><br><span class="line">git clone &lt;地址&gt; //克隆</span><br><span class="line">git branch &lt;分支名&gt; //创建分支</span><br><span class="line">git checkout/switch &lt;分支名&gt; //切换分支</span><br><span class="line">git merge &lt;要合并的分支&gt; //把分支合并到当前分支</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<li>final直接理解为指针指向的地址固定即可,final指向类时，该类不可被继承</li>
+<li>static则理解为不需要对类内部进行操作，类仅仅作为一个索引来访问方法，属于函数式编程的思想。<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="git存储的基本方式"><a href="#git存储的基本方式" class="headerlink" title="git存储的基本方式"></a>git存储的基本方式</h3>git只能跟踪文本文件的变动，存储的也是改变后的文件，未改变的文件在新的提交中指向同一个文件。<h3 id="git的基本命令"><a href="#git的基本命令" class="headerlink" title="git的基本命令"></a>git的基本命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">git init //用于把这个目录变成Git可以管理的仓库</span><br><span class="line">git add xxx //用于添加xxx文件</span><br><span class="line">git commit -m “提交说明” //用于提交</span><br><span class="line">git log //查看提交记录</span><br><span class="line">git reset --hard commit_id //硬回退到commit_id处</span><br><span class="line">git status //查看gitmodified和add的东西</span><br><span class="line">git checkout &lt;file&gt; //丢弃修改，即用版本库里的替换工作区的</span><br><span class="line">git reset HEAD &lt;file&gt; //丢弃暂存区内的文件</span><br><span class="line">git rm &lt;file&gt; //删除版本库文件</span><br><span class="line">git remote add origin &lt;地址&gt; // 注意origin是可以更改为其他名字的</span><br><span class="line">git push -u origin master //推送</span><br><span class="line">git clone &lt;地址&gt; //克隆</span><br><span class="line">git branch &lt;分支名&gt; //创建分支</span><br><span class="line">git checkout/switch &lt;分支名&gt; //切换分支</span><br><span class="line">git merge &lt;要合并的分支&gt; //把分支合并到当前分支</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3></li>
 <li>工作区即工作目录，git init创建的</li>
 <li>工作区内部有一个.git目录，即版本库，其中有一个stage的暂存区，还有master和head</li>
@@ -125,7 +127,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" rel="tag">软件构造 JAVA</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
 
     </footer>
   </div>
@@ -133,19 +135,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/04/29/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A22/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
-          Gradle和Maven配置工作
+          软构笔记（2）
         
       </div>
     </a>
   
   
-    <a href="/2022/04/18/hi/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/04/18/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">JAVA 集合转数组问题</div>
+      <div class="article-nav-title">Hello World</div>
     </a>
   
 </nav>
@@ -165,7 +167,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" rel="tag">软件构造 JAVA</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
     </div>
   </div>
 
@@ -175,7 +177,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">个人项目</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" style="font-size: 20px;">软件构造 JAVA</a>
+      <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">个人项目</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" style="font-size: 20px;">软件构造</a>
     </div>
   </div>
 
@@ -184,7 +186,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li></ul>
     </div>
   </div>
 
@@ -197,23 +199,23 @@
       <ul>
         
           <li>
+            <a href="/2022/06/15/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A26/">软构笔记（6）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/13/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A25/">软构笔记（5）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/04/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A24/">软构笔记（4）</a>
+          </li>
+        
+          <li>
             <a href="/2022/05/29/Vue/">(no title)</a>
           </li>
         
           <li>
             <a href="/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/">新闻后端准备工作</a>
-          </li>
-        
-          <li>
-            <a href="/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/">Gradle和Maven配置工作</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/22/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A21/">软构笔记（1）</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/18/hi/">JAVA 集合转数组问题</a>
           </li>
         
       </ul>

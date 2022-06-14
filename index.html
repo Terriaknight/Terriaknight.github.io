@@ -75,6 +75,265 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-软构博客6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/15/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A26/" class="article-date">
+  <time class="dt-published" datetime="2022-06-15T10:54:27.000Z" itemprop="datePublished">2022-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/15/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A26/">软构笔记（6）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-集合遍历"><a href="#1-集合遍历" class="headerlink" title="1.集合遍历"></a>1.集合遍历</h2><p>不要在 foreach 循环里进行元素的 remove&#x2F;add 操作。remove 元素请使用 Iterator 方式，如果并发操作，需要对 Iterator 对象加锁.</p>
+<h2 id="2-Arrays-aslist"><a href="#2-Arrays-aslist" class="headerlink" title="2.Arrays.aslist()"></a>2.Arrays.aslist()</h2><p>(1)当传入一个原生数据类型数组时，Arrays.asList() 的真正得到的参数就不是数组中的元素，而是数组对象本身！此时 List 的唯一元素就是这个数组，这也就解释了上面的代码。<br>我们使用包装类型数组就可以解决这个问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer[] myArray = &#123;1, 2, 3&#125;;</span><br></pre></td></tr></table></figure>
+<p>(2)Arrays.asList() 方法返回的并不是 java.util.ArrayList ，而是 java.util.Arrays 的一个内部类,这个内部类并没有实现集合的修改方法或者说并没有重写这些方法。</p>
+<h2 id="3-正确实现数组转列表"><a href="#3-正确实现数组转列表" class="headerlink" title="3.正确实现数组转列表"></a>3.正确实现数组转列表</h2><p><code>List list = new ArrayList&lt;&gt;(Arrays.asList(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;))</code><br>或者stream:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer [] myArray = &#123; 1, 2, 3 &#125;;</span><br><span class="line">List myList = Arrays.stream(myArray).collect(Collectors.toList());</span><br><span class="line">//基本类型也可以实现转换（依赖boxed的装箱操作）</span><br><span class="line">int [] myArray2 = &#123; 1, 2, 3 &#125;;</span><br><span class="line">List myList = Arrays.stream(myArray2).boxed().collect(Collectors.toList())</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/06/15/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A26/" data-id="cl4efw2bz0003dstb8upx7rkv" data-title="软构笔记（6）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-软构博客5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/13/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A25/" class="article-date">
+  <time class="dt-published" datetime="2022-06-13T10:31:23.000Z" itemprop="datePublished">2022-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/13/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A25/">软构笔记（5）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="静态工厂方法思路"><a href="#静态工厂方法思路" class="headerlink" title="静态工厂方法思路"></a>静态工厂方法思路</h2><ul>
+<li>可以直接在产品类的接口中使用public static xxx create(String type,xxx,xxx);</li>
+<li>创建一个新的产品工厂接口，直接在接口中使用public static xxx create(String type,xxx,xxx);</li>
+<li>创建一个新的产品工厂接口，定义多种实现类，在实现类中使用public static xxx create(String type,xxx,xxx);<h2 id="Adapter思路"><a href="#Adapter思路" class="headerlink" title="Adapter思路"></a>Adapter思路</h2></li>
+<li>其实本质就是继承，完全共性的放在父类，完全个性的放在子类<h2 id="Decorator思路"><a href="#Decorator思路" class="headerlink" title="Decorator思路"></a>Decorator思路</h2></li>
+<li>一个经典的例子就是html语言一层嵌套一层</li>
+<li><pre><code>* 第一个思路是先建立一个Decorator接口，再实现一个基本的BasicDecorator类继承Decorator接口。
+</code></pre>
+<ul>
+<li>这个类中有一个属性是指向被修饰的基本类，在构造函数中传入该借本类，且在其余函数中实现该基本类的所有方法，并且只调用该基本类实现。</li>
+<li>在剩下的更进一步的Decorator类都继承BasicDecorator类，并且对要具体实现的override即可（先super.method()）</li>
+</ul>
+</li>
+</ul>
+<h2 id="Vistor思路"><a href="#Vistor思路" class="headerlink" title="Vistor思路"></a>Vistor思路</h2><ul>
+<li>vistor的根本在于预留出位置交给外部去观察</li>
+<li>创建Vistor接口，实现具体类，注意Vistor的方法中需要把this或this的参数传入Vistor中。在要委托给Vistor的方法中，参数中传入Vistor（通常来说是accept(Vistor vistor)），在其内部调用Vistor方法即可。<h2 id="Iterator思路"><a href="#Iterator思路" class="headerlink" title="Iterator思路"></a>Iterator思路</h2></li>
+<li>创建一个Iterator类，继承自Iterator接口</li>
+<li>构造函数中传入要实现的类的基本遍历信息（比如length）。</li>
+<li>实现hasnext和next，注意这两个函数返回值</li>
+<li>要实现的类对应的接口继承Iterable接口，在具体实现类中override iterator(),并且函数体为 return new 上面的Iterator类<h2 id="Strategy思路"><a href="#Strategy思路" class="headerlink" title="Strategy思路"></a>Strategy思路</h2></li>
+<li>比vistor更加贴近内部的委托</li>
+<li><ul>
+<li>实现Strategy接口，然后实现其具体类，在具体类中实现不同的算法。</li>
+<li>在要实现的类中增加rep和SetStrategy（）方法，传入委托关系（也可以动态传入）</li>
+<li>要实现的类的方法基本由策略实现。</li>
+<li>客户端调用时还要使用SetStrategy（）<h2 id="模板思路"><a href="#模板思路" class="headerlink" title="模板思路"></a>模板思路</h2></li>
+</ul>
+</li>
+<li>注意这回使用一个抽象类</li>
+<li>先在抽象类用final定义步骤方法，从而使得该方法不可被重写</li>
+<li>对每个方法，若无定制个性化需要，则直接在该抽象类中实现，若有需求，则只给出抽象方法。</li>
+<li>然后实现具体类，客户端调用具体模板的步骤即可。<h2 id="正则语言"><a href="#正则语言" class="headerlink" title="正则语言"></a>正则语言</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">代码样例：</span><br><span class="line">Pattern pattern = Pattern.compile(&quot;&lt;regex&gt;&quot;);</span><br><span class="line">if(pattern.matcher(&quot;&lt;String&gt;&quot;).matches())&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+正则语言语法可参考形式语言中所学<br>这里主要讲一些重要的点</li>
+<li>注意java语法和普通正则语法的\时是不一样的，而且注意是\</li>
+<li>\. , . ;\\,\;\(,(;\[;</li>
+<li>[a-z],[abc],a+,a*,a?等等</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/06/13/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A25/" data-id="cl4efw2by0001dstb2zoqhjve" data-title="软构笔记（5）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-软构博客4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/04/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A24/" class="article-date">
+  <time class="dt-published" datetime="2022-06-04T06:11:09.000Z" itemprop="datePublished">2022-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/04/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A24/">软构笔记（4）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="spec归约"><a href="#spec归约" class="headerlink" title="spec归约"></a>spec归约</h2><h3 id="规约的组成"><a href="#规约的组成" class="headerlink" title="规约的组成"></a>规约的组成</h3><ul>
+<li><p>前置条件(precondition)：输入满足的条件，在注释中记作requires。</p>
+</li>
+<li><p>后置条件(postcondition)：输出满足的条件，在注释中记作effects。</p>
+</li>
+<li><p>例外行为(exceptional behavior)：当前置条件不满足时会发生的事件</p>
+<h3 id="规约的比较"><a href="#规约的比较" class="headerlink" title="规约的比较"></a>规约的比较</h3><p>当S2强于S1时</p>
+</li>
+<li><p>S2的前置条件相等或弱于S1的前置条件。</p>
+</li>
+<li><p>S2的后置条件相等或强于S1的后置条件。</p>
+<h3 id="规约的书写注意事项"><a href="#规约的书写注意事项" class="headerlink" title="规约的书写注意事项"></a>规约的书写注意事项</h3></li>
+<li><p>首先都要先满足业务需求，注意合法和非法条件</p>
+</li>
+<li><p>抛出异常使用的是Throws，而且抛出的异常都是checked异常</p>
+</li>
+<li><p>不满足前置条件，那么实现者可以随意设计</p>
+<h2 id="面向规约写测试"><a href="#面向规约写测试" class="headerlink" title="面向规约写测试"></a>面向规约写测试</h2><h3 id="等价类划分"><a href="#等价类划分" class="headerlink" title="等价类划分"></a>等价类划分</h3><p>面向规约，将输入划分为多个等价类</p>
+</li>
+<li><p>输入在一定范围内时，划分1个合法等价类和2个非法等价类</p>
+</li>
+<li><p>输入需要一个特定值时，划分1个合法等价类和2个非法等价类</p>
+</li>
+<li><p>输入需要某集合中的一个元素时，划分1个合法等价类和1个非法等价类</p>
+</li>
+<li><p>输入是布尔值时，划分1个合法等价类和1个非法等价类</p>
+<h3 id="边界值划分"><a href="#边界值划分" class="headerlink" title="边界值划分"></a>边界值划分</h3><p>面向等价类也需要有划分：</p>
+</li>
+<li><p>输入在以值a和b确定的范围内时，测试用例需要包含a、b以及恰好大于&#x2F;小于a、b的情形。</p>
+</li>
+<li><p>输入需要一系列值时，测试用例需要包含最大值及最小值，同时也应设计超过最大值和低于最小值的用例。</p>
+</li>
+<li><p>上述策略也需应用至输出上。</p>
+</li>
+<li><p>若内部数据结构有容量限制，也应设计测试用例测试这一容量限制。</p>
+<h2 id="RI和AF"><a href="#RI和AF" class="headerlink" title="RI和AF"></a>RI和AF</h2><p>这些都主要要面向业务去写：</p>
+</li>
+<li><p>rep：实现者需要实现的属性</p>
+</li>
+<li><p>AF：所存储的数据对应于用户想要的何种内容。</p>
+</li>
+<li><p>RI：通过RI可设计checkRep()。RI的本质是从计算机中的数据到布尔值的映射。</p>
+<h2 id="LSP原则"><a href="#LSP原则" class="headerlink" title="LSP原则"></a>LSP原则</h2><p>本质就是子类能够替换父类的原则：</p>
+</li>
+<li><p>更强的RI</p>
+</li>
+<li><p>更弱的前置条件</p>
+</li>
+<li><p>更强的后置条件</p>
+<h3 id="java中的LSP原则"><a href="#java中的LSP原则" class="headerlink" title="java中的LSP原则"></a>java中的LSP原则</h3><p>首先回一下override和overload的区别：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Overload</th>
+<th>Overrid</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>参数</td>
+<td>必须改变</td>
+<td>不可改变</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>可以改变</td>
+<td>不可改变</td>
+</tr>
+<tr>
+<td>异常</td>
+<td>可以改变</td>
+<td>可以减少，但不得增加或扩大范围</td>
+</tr>
+<tr>
+<td>访问</td>
+<td>可以改变</td>
+<td>可以放宽，但不得增加限制</td>
+</tr>
+<tr>
+<td>状态</td>
+<td>编译时</td>
+<td>运行时</td>
+</tr>
+<tr>
+<td>而在java中不能实现参数逆变，overload无法让返回值协变。</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>则Lsp的参数逆变是通过overload实现</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/06/04/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A24/" data-id="cl4efw2c40009dstbeq0f0j7q" data-title="软构笔记（4）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Vue" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/05/29/Vue/" class="article-date">
@@ -173,10 +432,10 @@ vue设计，应该是上模板，返回用户画像（类似于能力值的一�
 
 
   
-    <article id="post-Gradle和Maven配置工作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-软构博客3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/" class="article-date">
-  <time class="dt-published" datetime="2022-05-01T03:54:27.000Z" itemprop="datePublished">2022-05-01</time>
+    <a href="/2022/05/09/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A23/" class="article-date">
+  <time class="dt-published" datetime="2022-05-09T03:54:27.000Z" itemprop="datePublished">2022-05-09</time>
 </a>
     
   </div>
@@ -187,7 +446,7 @@ vue设计，应该是上模板，返回用户画像（类似于能力值的一�
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/">Gradle和Maven配置工作</a>
+      <a class="p-name article-title" href="/2022/05/09/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A23/">软构笔记(3)（软构实验笔记）</a>
     </h1>
   
 
@@ -219,11 +478,94 @@ vue设计，应该是上模板，返回用户画像（类似于能力值的一�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/" data-id="cl46rguci0000lstbazfb03zq" data-title="Gradle和Maven配置工作" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2022/05/09/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A23/" data-id="cl4efw2c7000adstbgn92djxo" data-title="软构笔记(3)（软构实验笔记）" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" rel="tag">软件构造 JAVA</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-软构博客2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/29/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A22/" class="article-date">
+  <time class="dt-published" datetime="2022-04-29T04:14:37.000Z" itemprop="datePublished">2022-04-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/29/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A22/">软构笔记（2）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="软件多维视图"><a href="#软件多维视图" class="headerlink" title="软件多维视图"></a>软件多维视图</h2><p>构建时：</p>
+<ul>
+<li><p>Code-level view：源码、类结构；代码变化表示代码的逻辑组织</p>
+</li>
+<li><p>Component-level view：文件、目录、包、库、静态链接、测试项；配置项、版本表示代码的物理组织</p>
+</li>
+<li><p>Moment view：源码、类结构；文件、目录、包、库、静态链接、测试项表现源码和组件在特定时刻的软件形态</p>
+</li>
+<li><p>Period view：代码变化；配置项、版本表现软件形态随时间的变化</p>
+</li>
+</ul>
+<p>运行时：</p>
+<ul>
+<li><p>分布式程序：需要多个运行程序，分别部署于多个计算机物理环境</p>
+</li>
+<li><p>代码快照：描述程序运行时内存里变量层面的状态</p>
+</li>
+<li><p>内存转储（Memory dump）：一个包含进程内存拷贝的磁盘文件，包含程<br>  序异常退出时的寄存器、调用栈、程序数据等，调试器可以加载转储文件并显示信息</p>
+</li>
+<li><p>执行跟踪（Execution tracing）：软件层面，用日志方式记录程序执行的调用次序</p>
+</li>
+<li><p>事件日志：系统层面的日志</p>
+</li>
+</ul>
+<h2 id="开发模型"><a href="#开发模型" class="headerlink" title="开发模型"></a>开发模型</h2><ul>
+<li><p>瀑布过程 ：线性推进、整体推进、非迭代</p>
+</li>
+<li><p>增量过程 ：线性推进、增量式（多个瀑布的串行）、非迭代</p>
+</li>
+<li><p>V-Model ：线性推进、每个开发阶段都有相应的测试对齐进行验证，但是<br>测试与开发是串行而非并行进行的，也就是测试需要等开发完成后再开始。</p>
+</li>
+<li><p>原型过程 ：开发出来之后由用户试用&#x2F;评审，发现问题反馈给开发者，开发者修改原有的实现，继续交给用户评审，循环往复这个过程，直到用户满意为止。重点在于在原型上持续不断地迭代发现用户变化的需求。</p>
+</li>
+<li><p>螺旋过程多轮迭代基本遵循瀑布模式，每轮迭代有明确的目标 ，遵循“原型”过程进行严格的风险分析，方可进入下一轮迭代。</p>
+</li>
+</ul>
+<h3 id="敏捷开发"><a href="#敏捷开发" class="headerlink" title="敏捷开发"></a>敏捷开发</h3><ul>
+<li>个体和互动高于流程和工具</li>
+<li>工作的软件高于详尽的文档</li>
+<li>客户合作高于合同谈判</li>
+<li>响应变化高于遵循计划</li>
+<li>敏捷 &#x3D; 增量 + 迭代，每次迭代处理一个小规模增量。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/29/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A22/" data-id="cl4efw2bt0000dstb6tp340zn" data-title="软构笔记（2）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
 
     </footer>
   </div>
@@ -255,18 +597,19 @@ vue设计，应该是上模板，返回用户画像（类似于能力值的一�
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="软构笔记（1）"><a href="#软构笔记（1）" class="headerlink" title="软构笔记（1）"></a>软构笔记（1）</h1><h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><h3 id="静态检查："><a href="#静态检查：" class="headerlink" title="静态检查："></a>静态检查：</h3><ul>
+        <h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><h3 id="静态检查："><a href="#静态检查：" class="headerlink" title="静态检查："></a>静态检查：</h3><ul>
 <li>语法错误：指java语法错误</li>
 <li>函数名字调用错误：如math.sine(实际为math.sin)</li>
 <li>函数参数错误，参数数目错误和参数类型错误</li>
-<li>函数返回类型和函数体的return 不同</li>
-<li>未初始化错误<h3 id="动态检查"><a href="#动态检查" class="headerlink" title="动态检查"></a>动态检查</h3></li>
+<li>函数返回类型和函数体的return 不同(注意void类型返回null也会出错)</li>
+<li>未初始化错误</li>
+<li>访问私有变量<h3 id="动态检查"><a href="#动态检查" class="headerlink" title="动态检查"></a>动态检查</h3></li>
 <li>非法变量值，如x&#x2F;y，当y为0时。</li>
 <li>无法表示的返回值，比如Interger.valueof(“hello”),则会报错</li>
 <li>越界访问，指数组越界或字符串越界</li>
 <li>nullpointer错误<h3 id="final和static"><a href="#final和static" class="headerlink" title="final和static"></a>final和static</h3></li>
-<li>final直接理解为指针指向的地址固定即可</li>
-<li>static则理解为不需要对类内部进行操作，类仅仅作为一个索引来访问方法，属于函数式编程的思想。<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><h3 id="git存储的基本方式"><a href="#git存储的基本方式" class="headerlink" title="git存储的基本方式"></a>git存储的基本方式</h3>git只能跟踪文本文件的变动，存储的也是改变后的文件，未改变的文件在新的提交中指向同一个文件。<h3 id="git的基本命令"><a href="#git的基本命令" class="headerlink" title="git的基本命令"></a>git的基本命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">git init //用于把这个目录变成Git可以管理的仓库</span><br><span class="line">git add xxx //用于添加xxx文件</span><br><span class="line">git commit -m “提交说明” //用于提交</span><br><span class="line">git log //查看提交记录</span><br><span class="line">git reset --hard commit_id //硬回退到commit_id处</span><br><span class="line">git status //查看gitmodified和add的东西</span><br><span class="line">git checkout &lt;file&gt; //丢弃修改，即用版本库里的替换工作区的</span><br><span class="line">git reset HEAD &lt;file&gt; //丢弃暂存区内的文件</span><br><span class="line">git rm &lt;file&gt; //删除版本库文件</span><br><span class="line">git remote add origin &lt;地址&gt; // 注意origin是可以更改为其他名字的</span><br><span class="line">git push -u origin master //推送</span><br><span class="line">git clone &lt;地址&gt; //克隆</span><br><span class="line">git branch &lt;分支名&gt; //创建分支</span><br><span class="line">git checkout/switch &lt;分支名&gt; //切换分支</span><br><span class="line">git merge &lt;要合并的分支&gt; //把分支合并到当前分支</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<li>final直接理解为指针指向的地址固定即可,final指向类时，该类不可被继承</li>
+<li>static则理解为不需要对类内部进行操作，类仅仅作为一个索引来访问方法，属于函数式编程的思想。<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="git存储的基本方式"><a href="#git存储的基本方式" class="headerlink" title="git存储的基本方式"></a>git存储的基本方式</h3>git只能跟踪文本文件的变动，存储的也是改变后的文件，未改变的文件在新的提交中指向同一个文件。<h3 id="git的基本命令"><a href="#git的基本命令" class="headerlink" title="git的基本命令"></a>git的基本命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">git init //用于把这个目录变成Git可以管理的仓库</span><br><span class="line">git add xxx //用于添加xxx文件</span><br><span class="line">git commit -m “提交说明” //用于提交</span><br><span class="line">git log //查看提交记录</span><br><span class="line">git reset --hard commit_id //硬回退到commit_id处</span><br><span class="line">git status //查看gitmodified和add的东西</span><br><span class="line">git checkout &lt;file&gt; //丢弃修改，即用版本库里的替换工作区的</span><br><span class="line">git reset HEAD &lt;file&gt; //丢弃暂存区内的文件</span><br><span class="line">git rm &lt;file&gt; //删除版本库文件</span><br><span class="line">git remote add origin &lt;地址&gt; // 注意origin是可以更改为其他名字的</span><br><span class="line">git push -u origin master //推送</span><br><span class="line">git clone &lt;地址&gt; //克隆</span><br><span class="line">git branch &lt;分支名&gt; //创建分支</span><br><span class="line">git checkout/switch &lt;分支名&gt; //切换分支</span><br><span class="line">git merge &lt;要合并的分支&gt; //把分支合并到当前分支</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3></li>
 <li>工作区即工作目录，git init创建的</li>
 <li>工作区内部有一个.git目录，即版本库，其中有一个stage的暂存区，还有master和head</li>
@@ -280,52 +623,7 @@ vue设计，应该是上模板，返回用户画像（类似于能力值的一�
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" rel="tag">软件构造 JAVA</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hi" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/04/18/hi/" class="article-date">
-  <time class="dt-published" datetime="2022-04-18T10:54:27.000Z" itemprop="datePublished">2022-04-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/18/hi/">JAVA 集合转数组问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="1-集合遍历"><a href="#1-集合遍历" class="headerlink" title="1.集合遍历"></a>1.集合遍历</h2><p>不要在 foreach 循环里进行元素的 remove&#x2F;add 操作。remove 元素请使用 Iterator 方式，如果并发操作，需要对 Iterator 对象加锁.</p>
-<h2 id="2-Arrays-aslist"><a href="#2-Arrays-aslist" class="headerlink" title="2.Arrays.aslist()"></a>2.Arrays.aslist()</h2><p>(1)当传入一个原生数据类型数组时，Arrays.asList() 的真正得到的参数就不是数组中的元素，而是数组对象本身！此时 List 的唯一元素就是这个数组，这也就解释了上面的代码。<br>我们使用包装类型数组就可以解决这个问题。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer[] myArray = &#123;1, 2, 3&#125;;</span><br></pre></td></tr></table></figure>
-<p>(2)Arrays.asList() 方法返回的并不是 java.util.ArrayList ，而是 java.util.Arrays 的一个内部类,这个内部类并没有实现集合的修改方法或者说并没有重写这些方法。</p>
-<h2 id="3-正确实现数组转列表"><a href="#3-正确实现数组转列表" class="headerlink" title="3.正确实现数组转列表"></a>3.正确实现数组转列表</h2><p><code>List list = new ArrayList&lt;&gt;(Arrays.asList(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;))</code><br>或者stream:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer [] myArray = &#123; 1, 2, 3 &#125;;</span><br><span class="line">List myList = Arrays.stream(myArray).collect(Collectors.toList());</span><br><span class="line">//基本类型也可以实现转换（依赖boxed的装箱操作）</span><br><span class="line">int [] myArray2 = &#123; 1, 2, 3 &#125;;</span><br><span class="line">List myList = Arrays.stream(myArray2).boxed().collect(Collectors.toList())</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/04/18/hi/" data-id="cl24mf1gz0001nctbfdctc5ks" data-title="JAVA 集合转数组问题" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
 
     </footer>
   </div>
@@ -399,7 +697,7 @@ vue设计，应该是上模板，返回用户画像（类似于能力值的一�
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" rel="tag">软件构造 JAVA</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" rel="tag">软件构造</a></li></ul>
     </div>
   </div>
 
@@ -409,7 +707,7 @@ vue设计，应该是上模板，返回用户画像（类似于能力值的一�
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">个人项目</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0-JAVA/" style="font-size: 20px;">软件构造 JAVA</a>
+      <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">个人项目</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" style="font-size: 20px;">软件构造</a>
     </div>
   </div>
 
@@ -418,7 +716,7 @@ vue设计，应该是上模板，返回用户画像（类似于能力值的一�
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li></ul>
     </div>
   </div>
 
@@ -431,23 +729,23 @@ vue设计，应该是上模板，返回用户画像（类似于能力值的一�
       <ul>
         
           <li>
+            <a href="/2022/06/15/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A26/">软构笔记（6）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/13/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A25/">软构笔记（5）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/04/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A24/">软构笔记（4）</a>
+          </li>
+        
+          <li>
             <a href="/2022/05/29/Vue/">(no title)</a>
           </li>
         
           <li>
             <a href="/2022/05/29/%E6%96%B0%E9%97%BB%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/">新闻后端准备工作</a>
-          </li>
-        
-          <li>
-            <a href="/2022/05/01/Gradle%E5%92%8CMaven%E9%85%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/">Gradle和Maven配置工作</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/22/%E8%BD%AF%E6%9E%84%E5%8D%9A%E5%AE%A21/">软构笔记（1）</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/18/hi/">JAVA 集合转数组问题</a>
           </li>
         
       </ul>
